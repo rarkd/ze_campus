@@ -1,0 +1,250 @@
+/* ============================================================
+   shared/content-popup.css
+   Bottom Sheet Popup untuk konten (Play Content)
+   ============================================================ */
+
+/* ── Lock background saat popup terbuka ── */
+body.content-popup-open .main-scroll {
+  overflow: hidden !important;
+  pointer-events: none;
+}
+body.content-popup-open .navbar-top,
+body.content-popup-open .navbar-bottom {
+  pointer-events: none;
+}
+
+/* ── Overlay ── */
+.content-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 300;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.content-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Play Navbar (TERPISAH dari sheet, selalu di paling bawah layar) ── */
+.content-navbar {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 310; /* di atas overlay & sheet */
+  height: 72px;
+  background: #111;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 16px;
+  padding-bottom: env(safe-area-inset-bottom, 0px);
+
+  /* Tersembunyi total awalnya */
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), visibility 0s 0.35s;
+}
+.content-navbar.visible {
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), visibility 0s 0s;
+}
+
+/* Tombol ... */
+.content-footer__more {
+  width: 48px; height: 48px;
+  border-radius: 50%;
+  border: 2px solid #fff;
+  background: transparent;
+  color: #fff;
+  font-size: 20px;
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+  letter-spacing: 2px;
+  cursor: pointer;
+}
+.content-footer__more:active { opacity: 0.7; }
+
+/* Like + persentase */
+.content-footer__like {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  flex-shrink: 0;
+  background: none;
+  border: none;
+}
+.content-footer__like svg { width: 28px; height: 28px; }
+
+/* Spacer */
+.content-footer__spacer { flex: 1; }
+
+/* Tombol Play biru */
+.content-footer__play {
+  background: #5b7cf6;
+  border-radius: 30px;
+  border: none;
+  height: 48px;
+  padding: 0 40px;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  flex-shrink: 0;
+}
+.content-footer__play:active { opacity: 0.85; }
+.content-footer__play svg { width: 28px; height: 28px; fill: #fff; }
+
+/* ── Bottom Sheet (bottom diangkat = tinggi content-navbar) ── */
+.content-sheet {
+  position: fixed;
+  left: 0; right: 0;
+  bottom: 72px; /* tepat di atas content-navbar */
+  z-index: 301;
+  background: #e8e8e8;
+  border-radius: 20px 20px 0 0;
+  max-height: calc(92vh - 72px);
+  min-height: var(--peek);
+
+  /* Tersembunyi total awalnya */
+  visibility: hidden;
+  pointer-events: none;
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), visibility 0s 0.35s;
+
+  --peek: 380px;
+  overflow: hidden;
+}
+
+.content-sheet.open {
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(calc(100% - var(--peek)));
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), visibility 0s 0s;
+}
+
+.content-sheet.full {
+  visibility: visible;
+  pointer-events: auto;
+  transform: translateY(0);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1), visibility 0s 0s;
+}
+
+.content-sheet::-webkit-scrollbar { display: none; }
+
+/* ── Body ── */
+.content-sheet__body {
+  padding: 16px 16px 16px;
+}
+
+/* ── Header ── */
+.content-sheet__title {
+  font-size: 28px;
+  font-weight: 700;
+  color: #111;
+  line-height: 1.2;
+  margin-bottom: 2px;
+}
+.content-sheet__subtitle {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 14px;
+}
+
+/* ── Carousel wrapper ── */
+.content-sheet__thumb {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border-radius: 12px;
+  border: 2px solid #111;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 10px;
+  background: #d8d8d8;
+}
+
+/* Carousel track */
+.content-carousel {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  border-radius: 10px;
+}
+.content-carousel__track {
+  display: flex;
+  height: 100%;
+  will-change: transform;
+  transition: transform 0.3s cubic-bezier(.4,0,.2,1);
+}
+.content-carousel__slide {
+  flex-shrink: 0;
+  width: 100%;
+  height: 100%;
+}
+.content-carousel__slide img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+  pointer-events: none;
+  -webkit-user-drag: none;
+}
+
+/* Dots indicator */
+.content-sheet__dots {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+.content-sheet__dot {
+  height: 8px;
+  border-radius: 4px;
+  background: #111;
+  transition: width 0.2s ease, opacity 0.2s ease;
+}
+.content-sheet__dot--active   { width: 20px; opacity: 1; }
+.content-sheet__dot--inactive { width: 8px;  opacity: 0.35; }
+
+/* ── Description ── */
+.content-sheet__desc-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 2px;
+}
+.content-sheet__desc-text {
+  font-size: 14px;
+  color: #444;
+  margin-bottom: 20px;
+}
+
+/* ── Information (hanya tampil saat full) ── */
+.content-sheet__info {
+  margin-bottom: 20px;
+}
+.content-sheet__info-title {
+  font-size: 24px;
+  font-weight: 700;
+  color: #111;
+  margin-bottom: 10px;
+}
+.content-sheet__info-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+}
+.content-sheet__info-key { font-size: 14px; color: #111; }
+.content-sheet__info-val { font-size: 14px; color: #111; }

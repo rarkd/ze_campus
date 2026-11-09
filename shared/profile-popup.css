@@ -1,0 +1,268 @@
+/* ============================================================
+   shared/profile-popup.css
+   Bottom Sheet Popup untuk Profile (self) dan Profile Teman
+   ============================================================ */
+
+/* ── Lock background scroll saat popup terbuka ── */
+body.popup-open .main-scroll {
+  overflow: hidden !important;
+  pointer-events: none;
+}
+body.popup-open .navbar-top,
+body.popup-open .navbar-bottom {
+  pointer-events: none;
+}
+
+/* ── Overlay gelap di belakang sheet ── */
+.popup-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  background: rgba(0, 0, 0, 0.45);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+.popup-overlay.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+/* ── Bottom Sheet ── */
+.profile-sheet {
+  position: fixed;
+  left: 0; right: 0; bottom: 0;
+  z-index: 201;
+  background: #eeeeee;
+  border-radius: 20px 20px 0 0;
+  max-height: 92vh;
+
+  transform: translateY(100%);
+  transition: transform 0.35s cubic-bezier(.4,0,.2,1);
+
+  --peek: 340px;
+  overflow: hidden;
+}
+
+.profile-sheet.open {
+  transform: translateY(calc(100% - var(--peek)));
+}
+
+.profile-sheet.full {
+  transform: translateY(0);
+  overflow-y: auto;
+  overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.profile-sheet::-webkit-scrollbar { display: none; }
+
+/* ── Drag handle — OVERLAY di atas banner ── */
+.sheet-handle {
+  position: absolute;   /* tidak mendorong banner ke bawah */
+  top: 10px;
+  left: 0; right: 0;
+  z-index: 10;          /* di atas banner */
+  display: flex;
+  justify-content: center;
+  cursor: grab;
+  pointer-events: none; /* touch diteruskan ke sheet listener */
+}
+.sheet-handle__bar {
+  width: 40px; height: 4px;
+  border-radius: 2px;
+  background: rgba(255, 255, 255, 0.75); /* putih agar kontras di atas banner */
+  pointer-events: auto;
+}
+
+/* ── Banner (PNG cover) — rasio 16:9 ── */
+.sheet-banner {
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #cccccc;   /* fallback saat PNG belum load */
+  flex-shrink: 0;
+  overflow: hidden;
+}
+.sheet-banner img {
+  width: 100%; height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Avatar — overlap banner ── */
+.sheet-avatar-wrap {
+  position: relative;
+  margin-top: -52px;
+  margin-left: 16px;
+  display: inline-block;
+  z-index: 2;
+}
+.sheet-avatar {
+  width: 90px; height: 90px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #eeeeee;
+  background: #cc0000;
+  display: block;
+}
+
+/* ── Header nama — di bawah banner ── */
+.sheet-header {
+  background: #eeeeee;
+  padding: 6px 16px 12px 124px;
+  margin-top: -90px;
+  min-height: 90px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+.sheet-name {
+  font-size: 22px;
+  font-weight: 600;
+  color: #111;
+  line-height: 1.2;
+}
+.sheet-username {
+  font-size: 13px;
+  color: #333;
+  margin-top: 2px;
+}
+
+/* ── Body abu-abu ── */
+.sheet-body {
+  background: #eeeeee;
+  padding: 12px 16px 32px;
+}
+
+.sheet-friends {
+  font-size: 15px;
+  font-weight: 500;
+  color: #222;
+  margin-bottom: 14px;
+}
+
+/* ── Tombol aksi ── */
+.sheet-actions {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+.sheet-btn {
+  flex: 1;
+  height: 44px;
+  border-radius: 22px;
+  background: #111;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  display: flex; align-items: center; justify-content: center;
+  cursor: pointer;
+  border: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.sheet-btn:active { opacity: 0.8; }
+.sheet-btn--icon {
+  flex: 0 0 44px;
+  font-size: 18px;
+  letter-spacing: 2px;
+}
+
+/* ── Section title ── */
+.sheet-section-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin: 16px 0 10px;
+}
+
+/* ── Tab bar ── */
+.sheet-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  flex-wrap: wrap;
+}
+.sheet-tab {
+  padding: 6px 16px;
+  border-radius: 20px;
+  background: #111;
+  color: #fff;
+  font-size: 13px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+.sheet-tab.active { background: #3333cc; }
+
+/* ── Grid item horizontal scroll ── */
+.sheet-item-grid {
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;
+  padding-bottom: 4px;
+}
+.sheet-item-grid::-webkit-scrollbar { display: none; }
+
+.sheet-item {
+  flex-shrink: 0;
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+.sheet-item__thumb {
+  width: 100px; height: 100px;
+  border-radius: 14px;
+  border: 1.5px solid #bbb;
+  background: #f0f0f0;
+  overflow: hidden;
+}
+.sheet-item__thumb img {
+  width: 100%; height: 100%; object-fit: cover;
+}
+.sheet-item__desc {
+  font-size: 11px;
+  color: #444;
+  text-align: center;
+  line-height: 1.2;
+}
+.sheet-item__use {
+  padding: 4px 14px;
+  border-radius: 12px;
+  background: #111;
+  color: #fff;
+  font-size: 11px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+}
+
+/* ── Bio ── */
+.sheet-bio-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin: 20px 0 4px;
+}
+.sheet-bio-text {
+  font-size: 13px;
+  color: #444;
+}
+
+/* ── Member Since ── */
+.sheet-since-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #111;
+  margin: 20px 0 4px;
+}
+.sheet-since-text {
+  font-size: 13px;
+  color: #444;
+}

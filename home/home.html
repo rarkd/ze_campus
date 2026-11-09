@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no" />
+  <title>Home</title>
+  <!-- home.css mendefinisikan :root, base, konten -->
+  <link rel="stylesheet" href="home.css" />
+  <!-- navbar.css mendefinisikan navbar top & bottom (memakai variabel dari home.css) -->
+  <link rel="stylesheet" href="../navbar/navbar.css" />
+  <!-- popup profile bottom sheet -->
+  <link rel="stylesheet" href="../shared/profile-popup.css" />
+  <!-- popup play content bottom sheet -->
+  <link rel="stylesheet" href="../shared/content-popup.css" />
+  <!-- popup pdf fullscreen -->
+  <link rel="stylesheet" href="../shared/pdf-popup.css" />
+</head>
+<body>
+
+  <!-- ============================================================
+       NAVBAR TOP
+       Layout: [hamburger] [logo] [spacer] [search] [$] [bell]
+       Logo langsung di samping kanan hamburger.
+  ============================================================ -->
+  <header class="navbar-top" id="navbarTop">
+    <div class="navbar-top__inner">
+
+      <!-- Hamburger -->
+      <button class="nav-btn" id="menuBtn" aria-label="Menu">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Logo — langsung di samping kanan hamburger -->
+      <img src="../img/logo.png" alt="Logo" class="navbar-top__logo-img" />
+
+      <!-- Spacer: mendorong action icons ke kanan -->
+      <div class="navbar-top__spacer"></div>
+
+      <!-- Action icons: search, wallet, notifikasi -->
+      <div class="navbar-top__actions">
+        <button class="nav-btn" aria-label="Search">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+          </svg>
+        </button>
+        <button class="nav-btn" aria-label="Wallet">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
+          </svg>
+        </button>
+        <button class="nav-btn" aria-label="Notification">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </button>
+      </div>
+
+    </div>
+  </header>
+
+  <!-- ============================================================
+       MAIN SCROLL AREA
+  ============================================================ -->
+  <main class="main-scroll" id="mainScroll">
+
+    <!-- === Profile Row === -->
+    <section class="section-profile">
+      <div class="profile-row">
+        <img src="../img/profile.png" alt="Profile" class="profile-avatar" />
+        <span class="profile-name">Name</span>
+      </div>
+    </section>
+
+    <!-- === Teman === -->
+    <section class="section-friends">
+      <div class="friends-scroll" id="friendsScroll">
+
+        <!-- Add Friend -->
+        <div class="friend-item">
+          <div class="friend-avatar friend-avatar--add">
+            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <line x1="19" y1="8" x2="19" y2="14"/>
+              <line x1="16" y1="11" x2="22" y2="11"/>
+            </svg>
+          </div>
+          <span class="friend-name">Add Friend</span>
+          <span class="friend-title">&nbsp;</span>
+        </div>
+
+        <!-- 10 Friends -->
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+        <div class="friend-item">
+          <img src="../img/friend.png" alt="Friend" class="friend-avatar" />
+          <span class="friend-name">Friend Name</span>
+          <span class="friend-title">Title</span>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- === Webinar === -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Webinar</h2>
+        <p class="section-paragraph">Paragraph</p>
+      </div>
+      <div class="card-scroll" id="webinarScroll">
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Webinar" /></div>
+          <p class="card-name">Name Webinar</p>
+          <p class="card-meta">21:00 WIB</p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Webinar" /></div>
+          <p class="card-name">Name Webinar</p>
+          <p class="card-meta">21:00 WIB</p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Webinar" /></div>
+          <p class="card-name">Name Webinar</p>
+          <p class="card-meta">21:00 WIB</p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Webinar" /></div>
+          <p class="card-name">Name Webinar</p>
+          <p class="card-meta">21:00 WIB</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Top Content === -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Top Content</h2>
+        <p class="section-paragraph">Paragraph</p>
+      </div>
+      <div class="card-scroll" id="topContentScroll">
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Content" /></div>
+          <p class="card-name">Name</p>
+          <p class="card-stats">
+            <span class="stat-like">&#128077; 90%</span>
+            <span class="stat-play">&#9654; 1.2k</span>
+          </p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Content" /></div>
+          <p class="card-name">Name</p>
+          <p class="card-stats">
+            <span class="stat-like">&#128077; 90%</span>
+            <span class="stat-play">&#9654; 1.2k</span>
+          </p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Content" /></div>
+          <p class="card-name">Name</p>
+          <p class="card-stats">
+            <span class="stat-like">&#128077; 90%</span>
+            <span class="stat-play">&#9654; 1.2k</span>
+          </p>
+        </div>
+        <div class="card-item">
+          <div class="card-thumb"><img src="../img/banner.png" alt="Content" /></div>
+          <p class="card-name">Name</p>
+          <p class="card-stats">
+            <span class="stat-like">&#128077; 90%</span>
+            <span class="stat-play">&#9654; 1.2k</span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- === Recommended For You === -->
+    <section class="section-block">
+      <div class="section-header">
+        <h2 class="section-title">Recomended For You</h2>
+      </div>
+      <div class="recommend-grid" id="recommendGrid"></div>
+      <div class="recommend-sentinel" id="recommendSentinel"></div>
+    </section>
+
+    <div class="bottom-spacer"></div>
+
+  </main>
+
+  <!-- ============================================================
+       NAVBAR BOTTOM
+  ============================================================ -->
+  <nav class="navbar-bottom" id="navbarBottom">
+    <button class="bottom-item active" aria-label="Home">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+      </svg>
+      <span>Home</span>
+    </button>
+    <button class="bottom-item" id="cartsBtn" aria-label="Carts">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M7 18c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zM7.8 14l.2 1H19l2.7-7H6.2l-.94-5H1v2h3.25l3.55 12z"/>
+      </svg>
+      <span>Carts</span>
+    </button>
+    <button class="bottom-item" id="profileBtn" aria-label="Profile">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+        <circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.6-7 8-7s8 3 8 7"/>
+      </svg>
+      <span>Profile</span>
+    </button>
+    <button class="bottom-item" aria-label="Chat">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+      <span>Chat</span>
+    </button>
+  </nav>
+
+  <!-- ============================================================
+       PROFILE POPUP (Bottom Sheet) — Self & Friend
+  ============================================================ -->
+  <div class="popup-overlay" id="profileOverlay"></div>
+  <div class="profile-sheet" id="profileSheet">
+
+    <!-- Drag handle -->
+    <div class="sheet-handle"><div class="sheet-handle__bar"></div></div>
+
+    <!-- Banner (PNG) — ganti banner.png dengan foto banner asli -->
+    <div class="sheet-banner">
+      <img src="../img/banner.png" alt="Banner" />
+    </div>
+
+    <!-- Avatar overlapping banner -->
+    <div class="sheet-avatar-wrap">
+      <img src="../img/profile.png" alt="Avatar" class="sheet-avatar" id="sheetAvatarImg" />
+    </div>
+
+    <!-- Header nama (latar kuning) -->
+    <div class="sheet-header">
+      <p class="sheet-name" id="sheetName">Nama</p>
+      <p class="sheet-username" id="sheetUsername">username</p>
+    </div>
+
+    <!-- Body abu-abu: konten dinamis -->
+    <div class="sheet-body">
+      <p class="sheet-friends" id="sheetFriends">12 Friends</p>
+      <div class="sheet-dynamic" id="sheetDynamic"></div>
+    </div>
+
+  </div>
+
+  <!-- ============================================================
+       CONTENT POPUP (Bottom Sheet) — Play Content
+  ============================================================ -->
+  <div class="content-overlay" id="contentOverlay"></div>
+
+  <!-- Sheet: hanya berisi konten (title, thumb, desc, info) -->
+  <div class="content-sheet" id="contentSheet">
+    <div class="content-sheet__body"></div>
+  </div>
+
+  <!-- Play Navbar: TERPISAH dari sheet, z-index lebih tinggi -->
+  <div class="content-navbar" id="contentNavbar">
+    <button class="content-footer__more" aria-label="More">&#x2026;</button>
+    <button class="content-footer__like" aria-label="Like">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/>
+        <path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/>
+      </svg>
+      <span class="content-footer__like-pct">1%</span>
+    </button>
+    <div class="content-footer__spacer"></div>
+    <button class="content-footer__play" aria-label="Play">
+      <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+    </button>
+  </div>
+
+  <!-- ============================================================
+       PDF POPUP (Full Screen) — Play Content PDF
+  ============================================================ -->
+  <div class="pdf-popup" id="pdfPopup">
+    <div class="pdf-popup__header">
+      <div class="pdf-popup__title-group">
+        <div class="pdf-popup__title">Teks</div>
+        <div class="pdf-popup__subtitle">Teks</div>
+      </div>
+      <button class="pdf-popup__close" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+    </div>
+    <div class="pdf-popup__body"></div>
+  </div>
+
+  <script src="../shared/profile-popup.js"></script>
+  <script src="../shared/content-popup.js"></script>
+  <script src="../shared/pdf-popup.js"></script>
+  <script src="home.js"></script>
+</body>
+</html>

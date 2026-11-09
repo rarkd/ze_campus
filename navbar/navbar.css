@@ -1,0 +1,115 @@
+/* ============================================================
+   navbar/navbar.css — Komponen Navbar (Top & Bottom)
+   Variabel CSS didefinisikan di home/home.css (:root)
+   ============================================================ */
+
+/* ── NAVBAR TOP ── */
+.navbar-top {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  background: transparent;
+  transform: translateY(0);
+  transition: transform var(--transition), background var(--transition);
+  /* Padding atas untuk notch / kamera depan (diset JS via setTopInset) */
+  padding-top: var(--safe-top);
+}
+
+/* Background putih saat konten sudah di-scroll */
+.navbar-top.scrolled {
+  background: rgba(255, 255, 255, 0.98);
+  border-bottom: 1px solid var(--gray-border);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+/* Hide ke atas */
+.navbar-top.hidden {
+  transform: translateY(calc(-100% - var(--safe-top)));
+}
+
+/* Inner: hamburger | logo | [spacer] | search $ bell */
+.navbar-top__inner {
+  height: var(--navbar-top-h);
+  display: flex;
+  align-items: center;
+  padding: 0 14px;
+  gap: 10px;
+}
+
+/* Logo — langsung di samping kanan hamburger */
+.navbar-top__logo-img {
+  height: 28px;
+  width: auto;
+  object-fit: contain;
+  flex-shrink: 0;
+  /* override global img rule */
+  display: block;
+  max-width: 120px;
+}
+
+/* Spacer mendorong action-icons ke kanan */
+.navbar-top__spacer {
+  flex: 1;
+}
+
+/* Icon buttons */
+.nav-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px; height: 38px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  color: var(--black);
+  transition: background 0.15s, color 0.15s;
+}
+.nav-btn:active { background: rgba(0,0,0,0.08); }
+
+/* Warna ikon tetap hitam saat navbar scrolled (putih) */
+.navbar-top.scrolled .nav-btn { color: var(--black); }
+/* Logo dibiarkan warna asli (tidak di-invert) */
+
+/* Action icons group */
+.navbar-top__actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+/* ── NAVBAR BOTTOM ── */
+.navbar-bottom {
+  position: fixed;
+  bottom: 0; left: 0; right: 0;
+  z-index: 100;
+  background: var(--white);
+  border-top: 1px solid var(--gray-border);
+  display: flex;
+  align-items: stretch;
+  padding-bottom: var(--safe-bottom);
+  transform: translateY(0);
+  transition: transform var(--transition);
+}
+
+/* Hide ke bawah */
+.navbar-bottom.hidden {
+  transform: translateY(calc(100% + var(--safe-bottom)));
+}
+
+.bottom-item {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3px;
+  height: var(--navbar-bottom-h);
+  color: var(--gray-text);
+  font-size: 11px;
+  font-weight: 500;
+  transition: color 0.15s;
+}
+
+.bottom-item.active { color: var(--blue); }
+.bottom-item:active  { color: var(--black); }
+
